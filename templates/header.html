@@ -1,0 +1,25 @@
+{{define "header"}}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <title>{{.title}}</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
+        nav { background: #333; padding: 10px; border-radius: 5px; margin-bottom: 20px; }
+        nav a { color: white; margin-right: 15px; text-decoration: none; }
+        nav a:hover { text-decoration: underline; }
+        .container { border: 1px solid #eee; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .btn { display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+    <script defer src="https://umami.bz117.com/script.js" data-website-id="5100ad19-2392-49cb-a0a9-92ce7e7750e4"></script>
+</head>
+<body>
+    <nav>
+        <a href="/">首页</a>
+        <a href="/works">作品集</a>
+        <a href="https://juejin.cn/user/2338021235236315" target="_blank">博客</a>
+    </nav>
+    <div class="container">
+{{end}}
