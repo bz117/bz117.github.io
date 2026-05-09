@@ -1,0 +1,248 @@
+<style>
+    /* 基础复位：确保 body 撑满全屏高度 */
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;          /* 强制 body 宽度为 100% */
+        overflow-x: hidden;
+        background-color: #f0f4f8;
+        
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        
+        /* 核心修复 1：确保 Flex 子元素在水平方向居中 */
+        align-items: center; 
+        justify-content: center; /* 核心修复 2：增加纵向居中保障 */
+    }
+
+    /* 矩阵代码雨：保持固定背景 */
+    #matrixCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    /* 主体容器：极致毛玻璃感 */
+    .profile-container {
+        position: relative;
+        max-width: 700px;
+        width: 90%;          
+        
+        /* 核心修复 3：明确左右 margin 为 auto，确保在 body 内水平居中 */
+        margin: 40px auto; 
+        
+        padding: 50px 30px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.7); 
+        backdrop-filter: blur(15px) saturate(180%); 
+        -webkit-backdrop-filter: blur(15px) saturate(180%);
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+        animation: slideUp 1s ease-out;
+        
+        /* 核心修复 4：确保容器块级居中 */
+        display: block; 
+    }
+
+    /* 头像样式 */
+    .avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 6px solid #fff;
+        box-shadow: 0 10px 25px rgba(0, 123, 255, 0.1);
+        transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        margin: 0 auto 25px auto; /* 确保头像在容器内也居中 */
+    }
+
+    .avatar:hover {
+        transform: scale(1.08) rotate(-3deg);
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #2d3436;
+        margin-bottom: 15px;
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    .bio {
+        line-height: 1.8;
+        color: #636e72;
+        font-size: 1.1rem;
+        margin-bottom: 30px; 
+    }
+
+    .bio strong {
+        color: #00a8ff;
+        background: rgba(0, 168, 255, 0.08);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    /* 按钮组 */
+    .btn-group {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 30px; 
+    }
+
+    .custom-btn {
+        padding: 14px 30px;
+        border-radius: 15px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #ffffff;
+    }
+
+    .btn-works {
+        background: linear-gradient(135deg, #e69845, #f0ed58);
+    }
+
+    .btn-models {
+        background: linear-gradient(135deg, rgb(59, 183, 59), #abf966);
+    }
+
+    .btn-tech-blog {
+        background: linear-gradient(135deg, #3588e6, #77e4ff);
+    }
+
+    .btn-game-blog {
+        background: linear-gradient(135deg, #9e32cc, #ff7fdf);
+    }
+
+    /* 详细介绍文本框样式 */
+    .intro-box {
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        padding: 25px;
+        text-align: left; 
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .intro-box h3 {
+        font-size: 1.2rem;
+        color: #0a60d1;
+        margin-top: 0;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .intro-box p {
+        color: #636e72;
+        font-size: 0.95rem;
+        line-height: 1.8;
+        margin: 0;
+    }
+
+    .custom-btn:hover {
+        transform: translateY(-4px);
+        filter: brightness(1.05);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<canvas id="matrixCanvas"></canvas>
+
+<div class="profile-container">
+    <img src="/static/avatar.png" alt="我的头像" class="avatar">
+    
+    <h1>bz117</h1>
+    
+    <div class="bio">
+        <p>
+            Hi, welcome to my website 👋 <br>
+            I'm pursuing a Bacher's degree in Computing Science in Singapore.<br>
+            I'm interested in AI, 3D and game designing.
+        </p>
+    </div>
+
+    <div class="btn-group">
+        <a href="/templates/works" class="custom-btn btn-works">
+            My Works
+        </a>
+        <a href="https://www.therookies.co/u/bz117" target="_blank" class="custom-btn btn-models">
+            My 3D Models
+        </a>
+    </div>
+
+    <div class="intro-box">
+        <h3>More about me</h3>
+        <p>
+            I'm a Chinese genZ learning in Singapore.<br>
+            I'm interested in AI and 3D. I'm preparing for a Master's degree in related fields.<br>
+            Besides, I'm learning Blender for 3D modeling and Unreal Engine for game development.<br>
+            I'm looking forward to make wonderful games myself soon.<br>
+            You can contack me through <b>bz117pro@outlook.com</b>.<br>
+        </p>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height, columns;
+    const fontSize = 18;
+    const characters = '01AIxyz<>/{}#*+~øπ';
+    let drops = [];
+
+    function initCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+
+        columns = Math.floor(width / fontSize);
+        drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.random() * -50; 
+        }
+    }
+
+    function draw() {
+        ctx.fillStyle = 'rgba(240, 244, 248, 0.15)';
+        ctx.fillRect(0, 0, width, height);
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = characters.charAt(Math.floor(Math.random() * characters.length));
+            const opacity = Math.random() * 0.5 + 0.2;
+            ctx.fillStyle = `rgba(0, 168, 255, ${opacity})`;
+            ctx.font = `600 ${fontSize}px Inter, sans-serif`;
+
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > height && Math.random() > 0.98) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
+    setInterval(draw, 50);
+</script>
+
